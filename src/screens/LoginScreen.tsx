@@ -32,7 +32,7 @@ export default function LoginScreen() {
       <Text style={styles.title}>Bem-vindo</Text>
       <TextInput style={styles.input} placeholder="Usuário" onChangeText={setUsername} />
       <TextInput style={styles.input} placeholder="Senha" secureTextEntry onChangeText={setPassword} />
-      <Button title="Entrar" onPress={handleLogin} />
+      <Button title="Entrar" onPress={handleLogin} color="#42988f"/>
     </View>
   );
 }
@@ -42,12 +42,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 24,
-    backgroundColor: '#f0f0f5',
+    backgroundColor: '#f0f0f5'
   },
   title: {
-    fontSize: 24,
+    fontSize: 36,
     marginBottom: 32,
     textAlign: 'center',
+    fontWeight: 'bold',
+    color:'#d65c56',
+    fontFamily:'LexendDecaRegular'
   },
   input: {
     backgroundColor: '#fff',

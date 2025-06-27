@@ -4,10 +4,11 @@ export interface User {
 }
 
 let users: User[] = [
-  { id: '1', nome: 'João' },
-  { id: '2', nome: 'Maria' },
-  { id: '3', nome: 'Edson' },
-  { id: '4', nome: 'Pedro' }
+  { id: '1', nome: 'Felipe Negri' },
+  { id: '2', nome: 'Felipe Ariel' },
+  { id: '3', nome: 'Edson Messias' },
+  { id: '4', nome: 'Pedro Augusto' },
+  { id: '5', nome: 'Kenny Almeida' }
 ];
 
 export const getUsers = async (): Promise<User[]> => {
