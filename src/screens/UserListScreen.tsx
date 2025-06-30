@@ -20,7 +20,7 @@ export default function UserListScreen() {
     }
   }, [isFocused]);
 
-   const handleLogout = async () => {
+  const handleLogout = async () => {
     await AsyncStorage.removeItem('token'); // limpa o token (se houver)
     navigation.reset({
       index: 0,
@@ -40,6 +40,8 @@ export default function UserListScreen() {
           </TouchableOpacity>
         )}
       />
+      <Button title="Novo usuário" onPress={() => navigation.navigate('UserCreate')} />
+      <Text style={styles.space}></Text>
       <Button title="Sair" onPress={handleLogout} color="#d65c56" />
     </View>
   );
@@ -54,12 +56,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f5'
 
   },
+  space: {
+    padding: 10,
+    margin: 10,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 32,
     textAlign: 'center',
-    color:'#42988f',
+    color: '#42988f',
   },
   input: {
     paddingVertical: 10,
@@ -67,7 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 16,
     textAlign: 'left',
-    color:'#736100',
-    fontWeight:'500'
+    color: '#736100',
+    fontWeight: '500'
   },
 });

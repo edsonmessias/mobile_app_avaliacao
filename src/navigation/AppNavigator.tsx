@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from 'react';
 
 import LoginScreen from '../screens/LoginScreen';
+import UserCreateScreen from '../screens/UserCreateScreen';
 import UserEditScreen from '../screens/UserEditScreen';
 import UserListScreen from '../screens/UserListScreen';
 
@@ -26,6 +27,7 @@ export default function AppNavigator() {
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="UserList" component={UserListScreen} />
                 <Stack.Screen name="UserEdit" component={UserEditScreen} />
+                <Stack.Screen name="UserCreate" component={UserCreateScreen} />
             </Stack.Navigator>
 
         </NavigationContainer>

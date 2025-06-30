@@ -11,6 +11,16 @@ let users: User[] = [
   { id: '5', nome: 'Kenny Almeida' }
 ];
 
+export const createUser = async (nome: string): Promise<User> => {
+  const novo: User = {
+    id: String(Date.now()),
+    nome
+  };
+  users.push(novo);
+  return novo;
+};
+
+
 export const getUsers = async (): Promise<User[]> => {
   return users;
 };
