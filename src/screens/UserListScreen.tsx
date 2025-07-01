@@ -43,6 +43,7 @@ export default function UserListScreen() {
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => navigation.navigate('UserEdit', { user: item })}>
             <Text style={styles.input}>{item.nome}</Text>
+            <Text style={styles.tinyInput}>{item.username}</Text>
           </TouchableOpacity>
         )}
       />
@@ -77,9 +78,16 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     fontSize: 20,
-    marginBottom: 16,
     textAlign: 'left',
     color: '#736100',
     fontWeight: '500'
   },
+  tinyInput: {
+    fontSize: 13,
+    color: '#736500',
+    paddingVertical: 2,
+    paddingHorizontal: 20,    
+    marginBottom: 6,
+    textAlign: 'left',
+  }
 });

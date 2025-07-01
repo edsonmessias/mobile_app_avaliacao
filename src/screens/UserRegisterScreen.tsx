@@ -6,10 +6,10 @@ import { User } from '../services/userService';
 import { addUser } from '../services/userStorage';
 
 type RootStackParamList = {
-  UserCreate: undefined;
+  UserList: undefined;
 };
 
-type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UserCreate'>;
+type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UserList'>;
 
 export default function UserRegisterScreen() {
     const navigation = useNavigation<LoginScreenNavigationProp>();
@@ -37,7 +37,7 @@ export default function UserRegisterScreen() {
         await addUser(novo);
         Alert.alert('Sucesso', 'Usuário cadastrado!');
         //navigation.goBack();
-        navigation.navigate('UserCreate');
+        navigation.navigate('UserList');
     };
 
     return (
