@@ -1,30 +1,36 @@
-//import { NavigationProp, useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from 'react';
 import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RootStackParamList } from '../navigation/types';
-import { getUsers, User } from '../services/userService';
+import { logout } from '../services/auth';
+import { User } from '../services/userService';
+import { getStoredUsers } from '../services/userStorage';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'UserList'>;
 
 export default function UserListScreen() {
   const [users, setUsers] = useState<User[]>([]);
   const navigation = useNavigation<NavigationProp>();
-  const isFocused = useIsFocused(); // detecta se a tela está visível
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     if (isFocused) {
-      getUsers().then(setUsers); // recarrega os usuários sempre que a tela volta
+      loadUsers();
     }
   }, [isFocused]);
 
+  const loadUsers = async () => {
+    const data = await getStoredUsers();
+    setUsers(data);
+  };
+
   const handleLogout = async () => {
-    await AsyncStorage.removeItem('token'); // limpa o token (se houver)
+    //await AsyncStorage.removeItem('token');
+    await logout();
     navigation.reset({
       index: 0,
-      routes: [{ name: 'Login' }], // volta para tela de login e limpa histórico
+      routes: [{ name: 'Login' }]
     });
   };
 

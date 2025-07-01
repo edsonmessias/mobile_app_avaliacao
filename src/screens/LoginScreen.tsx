@@ -1,12 +1,15 @@
-import { useNavigation } from '@react-navigation/native';
+//import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
+//import { login } from '../services/auth';
+import { useNavigation } from '@react-navigation/native';
 import { login } from '../services/auth';
 
 type RootStackParamList = {
   Login: undefined;
   UserList: undefined;
+  UserCreate: undefined;
   UserEdit: { user: { id: string; nome: string } };
 };
 
@@ -19,20 +22,24 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    const success = await login(username, password);
-    if (success) {
-      navigation.replace('UserList');
+    const user = await login(username, password);
+    if (user) {
+      navigation.reset({ index: 0, routes: [{ name: 'UserList' }] });
     } else {
       Alert.alert('Erro', 'Usuário ou senha inválidos');
     }
   };
+
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Bem-vindo</Text>
       <TextInput style={styles.input} placeholder="Usuário" onChangeText={setUsername} />
       <TextInput style={styles.input} placeholder="Senha" secureTextEntry onChangeText={setPassword} />
-      <Button title="Entrar" onPress={handleLogin} color="#42988f"/>
+      <Button title="Entrar" onPress={handleLogin} color="#42988f" />
+      <Text style={styles.space}></Text>
+      <Button title="Novo usuário" onPress={() => navigation.navigate('UserCreate')} />
+
     </View>
   );
 }
@@ -49,8 +56,12 @@ const styles = StyleSheet.create({
     marginBottom: 32,
     textAlign: 'center',
     fontWeight: 'bold',
-    color:'#d65c56',
-    fontFamily:'LexendDecaRegular'
+    color: '#d65c56',
+    fontFamily: 'LexendDecaRegular'
+  },
+  space: {
+    padding: 10,
+    margin: 10,
   },
   input: {
     backgroundColor: '#fff',

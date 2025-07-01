@@ -1,9 +1,12 @@
 export interface User {
   id: string;
   nome: string;
+  username: string;
+  password: string;
 }
 
-let users: User[] = [
+
+/*let users: User[] = [
   { id: '1', nome: 'Felipe Negri' },
   { id: '2', nome: 'Felipe Ariel' },
   { id: '3', nome: 'Edson Messias' },
@@ -27,4 +30,4 @@ export const getUsers = async (): Promise<User[]> => {
 
 export const updateUser = async (id: string, nome: string): Promise<void> => {
   users = users.map((user) => (user.id === id ? { ...user, nome } : user));
-};
+};*/
